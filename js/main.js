@@ -1,15 +1,15 @@
 "use strict";
 
-let hoursDial;
-let minutesTensDial;
-let minutesOnesDial;
-let secondsTensDial;
-let secondsOnesDial;
-let secondsTenthsDial;
-let dials;
+var hoursDial;
+var minutesTensDial;
+var minutesOnesDial;
+var secondsTensDial;
+var secondsOnesDial;
+var secondsTenthsDial;
+var dials;
 
-const TICK_DURATION = 1000;
-const TENTHS_TICK_DURATION = 100;
+var TICK_DURATION = 1000;
+var TENTHS_TICK_DURATION = 100;
 
 function initClock() {
     hoursDial       = document.getElementById("hours");
@@ -26,90 +26,60 @@ function initClock() {
         secondsOnesDial,
         secondsTenthsDial,
     ];
-    dials.forEach(dial => dial.style.position = "relative");
+    dials.forEach(function (dial) {
+        dial.style.position = "relative";
+    });
     updateClock();
     startClock();
     startTenths();
 }
 
-// batch up requestAnimationFrame tasks requested during this
-// execution cycle.
-let queue = [];
-// function next(fn) {
-//     window.requestAnimationFrame(fn);
-// }
-
 function next(fn) {
-    // if (!queue.length) {
-    //     requestAnimationFrame(function () {
-    //         console.log(queue.length);
-    //         const exeQueue = [...queue];
-    //         queue = [];
-    //         for (const f of exeQueue) {
-    //             f();
-    //         }
-    //     });
-    // }
-    // queue.push(fn);
-    requestAnimationFrame(fn);
+    return requestAnimationFrame(fn);
 }
-
-let queues = {};
 
 function timeout(fn, delay) {
-    // if (!queues[delay] || !queues[delay].length) {
-    //     queues[delay] = [];
-    //     setTimeout(function () {
-    //         console.log(`timeout ${queues[delay].length}`);
-    //         const exeQueue = [...queues[delay]];
-    //         queues[delay] = [];
-    //         for (const f of exeQueue) {
-    //             f();
-    //         }
-    //     }, delay);
-    // }
-    // queues[delay].push(fn);
-    setTimeout(fn, delay);
+    return setTimeout(fn, delay);
 }
 
-let hoursValue;
-let minutesTensValue;
-let minutesOnesValue;
-let secondsTensValue;
-let secondsOnesValue;
-let secondsTenthsValue;
+var hoursValue;
+var minutesTensValue;
+var minutesOnesValue;
+var secondsTensValue;
+var secondsOnesValue;
+var secondsTenthsValue;
 
-let hoursLastValue;
-let minutesTensLastValue;
-let minutesOnesLastValue;
-let secondsTensLastValue;
-let secondsOnesLastValue;
-let secondsTenthsLastValue;
+var hoursLastValue;
+var minutesTensLastValue;
+var minutesOnesLastValue;
+var secondsTensLastValue;
+var secondsOnesLastValue;
+var secondsTenthsLastValue;
 
-let hoursReset = false;
-let minutesTensReset = false;
-let minutesOnesReset = false;
-let secondsTensReset = false;
-let secondsOnesReset = false;
-let secondsTenthsReset = false;
+var hoursReset = false;
+var minutesTensReset = false;
+var minutesOnesReset = false;
+var secondsTensReset = false;
+var secondsOnesReset = false;
+var secondsTenthsReset = false;
 
-let hoursWillReset = false;
-let minutesTensWillReset = false;
-let minutesOnesWillReset = false;
-let secondsTensWillReset = false;
-let secondsOnesWillReset = false;
-let secondsTenthsWillReset = false;
+var hoursWillReset = false;
+var minutesTensWillReset = false;
+var minutesOnesWillReset = false;
+var secondsTensWillReset = false;
+var secondsOnesWillReset = false;
+var secondsTenthsWillReset = false;
 
 function updateClock(date) {
     if (date == null) {
         date = new Date();
     }
 
-    const hours = date.getHours();
-    const minutesTens = Math.floor(date.getMinutes() / 10);
-    const minutesOnes = date.getMinutes() % 10;
-    const secondsTens = Math.floor(date.getSeconds() / 10);
-    const secondsOnes = date.getSeconds() % 10;
+    var hours = date.getHours();
+    var minutesTens = Math.floor(date.getMinutes() / 10);
+    var minutesOnes = date.getMinutes() % 10;
+    var secondsTens = Math.floor(date.getSeconds() / 10);
+    var secondsOnes = date.getSeconds() % 10;
 
     hoursLastValue       = hoursValue       != null ? hoursValue       : hours;
     minutesTensLastValue = minutesTensValue != null ? minutesTensValue : minutesTens;
@@ -248,7 +218,7 @@ function updateClock(date) {
             minutesOnesDial.style.top = `calc(-1em * var(--line-height) * ${Number(minutesOnesValue)})`;
         }
         if (secondsTensReset) {
-            secondsTensDial.style.top = `calc(-1em * var(--line-height) * ${Number(secondsTensValue)})`; 
+            secondsTensDial.style.top = `calc(-1em * var(--line-height) * ${Number(secondsTensValue)})`;
         }
         if (secondsOnesReset) {
             secondsOnesDial.style.top = `calc(-1em * var(--line-height) * ${Number(secondsOnesValue)})`;
@@ -266,7 +236,7 @@ function updateTenths(date) {
         date = new Date();
     }
 
-    const secondsTenths = Math.round(date.getMilliseconds() / 100);
+    var secondsTenths = Math.round(date.getMilliseconds() / 100);
 
     secondsTenthsLastValue = secondsTenthsValue != null ? secondsTenthsValue : secondsTenths;
 
@@ -323,17 +293,17 @@ function updateTenths(date) {
 }
 
 function startClock() {
-    const now = new Date();
-    const delay = TICK_DURATION - now % TICK_DURATION;
-    const then = now.getTime() + delay;
+    var now = new Date();
+    var delay = TICK_DURATION - now % TICK_DURATION;
+    var then = now.getTime() + delay;
     updateClock(new Date(then));
     timeout(startClock, delay);
 }
 
 function startTenths() {
-    const now = new Date();
-    const delay = TENTHS_TICK_DURATION - now % TENTHS_TICK_DURATION;
-    const then = now.getTime() + delay;
+    var now = new Date();
+    var delay = TENTHS_TICK_DURATION - now % TENTHS_TICK_DURATION;
+    var then = now.getTime() + delay;
     updateTenths(new Date(then));
     timeout(startTenths, delay);
 }

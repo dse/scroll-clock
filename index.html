@@ -5,6 +5,13 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
         <link rel="stylesheet" href="css/main.css">
+        <script src="js/console.js"></script>
+        <script>
+            window.addEventListener("load", function () {
+                console = consoleReplacer(console, document.getElementById("console-replacer"));
+                console.log("Hello!");
+            });
+        </script>
         <script src="js/main.js"></script>
         <script src="js/modal.js"></script>
         <title>Odom Clock</title>
@@ -111,6 +118,9 @@
                 <li class="menu__list-item">
                     <a class="menu__link" href="#" data-toggle-modal="#clocks-modal">&#x1f552;</a>
                 </li>
+                <li class="menu__list-item">
+                    <a class="menu__link" href="#" data-toggle-modal="#console-modal">&gt;...</a>
+                </li>
             </ul>
         </div>
         <div id="clocks-modal" class="modal">
@@ -120,19 +130,31 @@
                     <a class="modal__close-button" data-toggle-modal="#clocks-modal" href="#">&times;</a>
                 </div>
                 <h1>
-                    Clocks
+                    clocks
                 </h1>
                 <ul>
                     <li>
-                        <a href="../cockpit-clock/">Cockpit Clock</a>
+                        <a href="../cockpit-clock/">cockpit clock</a>
                     </li>
                     <li>
-                        <a href="../flip-clock-2024/">Flip Clock</a>
+                        <a href="../flip-clock-2024/">flip clock</a>
                     </li>
                     <li>
-                        <a href="../scroll-clock/">Scroll Clock</a>
+                        <a href="../scroll-clock/">scroll clock</a>
                     </li>
                 </ul>
+            </div>
+        </div>
+        <div id="console-modal" class="modal">
+            <div class="modal__backdrop"></div>
+            <div class="modal__dialog">
+                <div class="modal__close">
+                    <a class="modal__close-button" data-toggle-modal="#console-modal" href="#">&times;</a>
+                </div>
+                <h1>
+                    Console
+                </h1>
+                <pre id="console-replacer" style="overflow-x: auto;"></pre>
             </div>
         </div>
         <script>
