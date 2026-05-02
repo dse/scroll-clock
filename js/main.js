@@ -34,14 +34,6 @@ function initClock() {
     startTenths();
 }
 
-function next(fn) {
-    return requestAnimationFrame(fn);
-}
-
-function timeout(fn, delay) {
-    return setTimeout(fn, delay);
-}
-
 var hoursValue;
 var minutesTensValue;
 var minutesOnesValue;
@@ -129,7 +121,7 @@ function updateClock(date) {
 
     step0();
     if (hoursReset || minutesTensReset || minutesOnesReset || secondsTensReset || secondsOnesReset) {
-        next(step1);
+        requestAnimationFrame(step1);
     }
 
     function step0() {
@@ -166,7 +158,7 @@ function updateClock(date) {
         if (secondsOnesReset) {
             secondsOnesDial.style.transition = "unset";
         }
-        next(step2);
+        requestAnimationFrame(step2);
     }
 
     function step2() {
@@ -185,7 +177,7 @@ function updateClock(date) {
         if (secondsOnesReset) {
             secondsOnesDial.style.top = 0;
         }
-        next(step3);
+        requestAnimationFrame(step3);
     }
 
     function step3() {
@@ -204,7 +196,7 @@ function updateClock(date) {
         if (secondsOnesReset) {
             secondsOnesDial.style.transition = "";
         }
-        next(step4);
+        requestAnimationFrame(step4);
     }
 
     function step4() {
@@ -254,7 +246,7 @@ function updateTenths(date) {
 
     step0();
     if (secondsTenthsReset) {
-        next(step1);
+        requestAnimationFrame(step1);
     }
 
     function step0() {
@@ -267,21 +259,21 @@ function updateTenths(date) {
         if (secondsTenthsReset) {
             secondsTenthsDial.style.transition = "unset";
         }
-        next(step2);
+        requestAnimationFrame(step2);
     }
 
     function step2() {
         if (secondsTenthsReset) {
             secondsTenthsDial.style.top = 0;
         }
-        next(step3);
+        requestAnimationFrame(step3);
     }
 
     function step3() {
         if (secondsTenthsReset) {
             secondsTenthsDial.style.transition = "";
         }
-        next(step4);
+        requestAnimationFrame(step4);
     }
 
     function step4() {
@@ -297,7 +289,7 @@ function startClock() {
     var delay = TICK_DURATION - now % TICK_DURATION;
     var then = now.getTime() + delay;
     updateClock(new Date(then));
-    timeout(startClock, delay);
+    setTimeout(startClock, delay);
 }
 
 function startTenths() {
@@ -305,7 +297,7 @@ function startTenths() {
     var delay = TENTHS_TICK_DURATION - now % TENTHS_TICK_DURATION;
     var then = now.getTime() + delay;
     updateTenths(new Date(then));
-    timeout(startTenths, delay);
+    setTimeout(startTenths, delay);
 }
 
 if (document.readyState === 'complete') {
