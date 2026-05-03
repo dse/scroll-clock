@@ -1,6 +1,7 @@
+@import url("../../clocks-common/css/normalize-8.0.1.css");
 @import url("fonts.css");
-@import url("menu.css");
-@import url("modal.css");
+@import url("../../clocks-common/css/menu.css");
+@import url("../../clocks-common/css/modal.css");
 
 :root {
     --background-color: #222;
@@ -51,6 +52,7 @@ body {
     padding-left: 0.025em;
     padding-right: 0.025em;
     background-color: black;
+    overflow: hidden;
 
     height: calc(1em * var(--line-height));
     border-width: 2px;
