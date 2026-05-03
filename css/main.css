@@ -1,7 +1,7 @@
-@import url("../../clocks-common/css/normalize-8.0.1.css");
+@import url("../../clocks/css/normalize-8.0.1.css");
 @import url("fonts.css");
-@import url("../../clocks-common/css/menu.css");
-@import url("../../clocks-common/css/modal.css");
+@import url("../../clocks/css/menu.css");
+@import url("../../clocks/css/modal.css");
 
 :root {
     --background-color: #222;
