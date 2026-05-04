@@ -5,140 +5,118 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
         <link rel="stylesheet" href="css/main.css">
-        <script src="js/console.js"></script>
-        <script>
-            window.addEventListener("load", function () {
-                console = consoleReplacer(console, document.getElementById("console-replacer"));
-                console.log("Hello!");
-            });
-        </script>
+        <link rel="stylesheet" href="css/fonts.css">
+        <link rel="stylesheet" href="css/menu.css">
+        <link rel="stylesheet" href="css/clock.css?v=9">
         <script src="js/clock.js"></script>
-        <script src="js/dial.js"></script>
         <script src="../clocks/js/modal.js"></script>
         <title>Scroll Clock</title>
     </head>
     <body>
-        <div class="scroll-clock">
-            <div class="scroll-clock__viewmaster">
-                <div class="scroll-clock__dial-backing">
-                    <div class="scroll-clock__dial scroll-clock__dial--hours" id="hours">
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="0">00</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="1">01</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="2">02</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="3">03</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="4">04</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="5">05</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="6">06</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="7">07</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="8">08</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="9">09</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="10">10</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="11">11</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="12">12</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="13">13</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="14">14</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="15">15</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="16">16</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="17">17</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="18">18</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="19">19</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="20">20</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="21">21</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="22">22</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="23">23</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--hours" data-value="24">00</div>
+        <div class="clock" id="clock">
+            <div class="clock-viewmaster">
+                <div class="clock-dial" id="hours">
+                    <div class="clock-dial-positioner">
+                        <div class="clock-numeral">00</div>
+                        <div class="clock-numeral">01</div>
+                        <div class="clock-numeral">02</div>
+                        <div class="clock-numeral">03</div>
+                        <div class="clock-numeral">04</div>
+                        <div class="clock-numeral">05</div>
+                        <div class="clock-numeral">06</div>
+                        <div class="clock-numeral">07</div>
+                        <div class="clock-numeral">08</div>
+                        <div class="clock-numeral">09</div>
+                        <div class="clock-numeral">10</div>
+                        <div class="clock-numeral">11</div>
+                        <div class="clock-numeral">12</div>
+                        <div class="clock-numeral">13</div>
+                        <div class="clock-numeral">14</div>
+                        <div class="clock-numeral">15</div>
+                        <div class="clock-numeral">16</div>
+                        <div class="clock-numeral">17</div>
+                        <div class="clock-numeral">18</div>
+                        <div class="clock-numeral">19</div>
+                        <div class="clock-numeral">20</div>
+                        <div class="clock-numeral">21</div>
+                        <div class="clock-numeral">22</div>
+                        <div class="clock-numeral">23</div>
+                        <div class="clock-numeral">00</div>
                     </div>
                 </div>
             </div>
-            <div class="scroll-clock__viewmaster">
-                <div class="scroll-clock__dial-backing">
-                    <div class="scroll-clock__dial scroll-clock__dial--minutes-tens-digit" id="minutes-tens">
-                        <div class="scroll-clock__numeral scroll-clock__numeral--minutes-tens-digit" data-value="0">0</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--minutes-tens-digit" data-value="1">1</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--minutes-tens-digit" data-value="2">2</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--minutes-tens-digit" data-value="3">3</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--minutes-tens-digit" data-value="4">4</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--minutes-tens-digit" data-value="5">5</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--minutes-tens-digit" data-value="0">0</div>
+            <div class="clock-viewmaster">
+                <div class="clock-dial" id="minutes-tens">
+                    <div class="clock-dial-positioner">
+                        <div class="clock-numeral">0</div>
+                        <div class="clock-numeral">1</div>
+                        <div class="clock-numeral">2</div>
+                        <div class="clock-numeral">3</div>
+                        <div class="clock-numeral">4</div>
+                        <div class="clock-numeral">5</div>
+                        <div class="clock-numeral">0</div>
                     </div>
                 </div>
-                <div class="scroll-clock__dial-backing">
-                    <div class="scroll-clock__dial scroll-clock__dial--minutes-ones-digit" id="minutes-ones">
-                        <div class="scroll-clock__numeral scroll-clock__numeral--minutes-ones-digit" data-value="0">0</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--minutes-ones-digit" data-value="1">1</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--minutes-ones-digit" data-value="2">2</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--minutes-ones-digit" data-value="3">3</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--minutes-ones-digit" data-value="4">4</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--minutes-ones-digit" data-value="5">5</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--minutes-ones-digit" data-value="6">6</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--minutes-ones-digit" data-value="7">7</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--minutes-ones-digit" data-value="8">8</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--minutes-ones-digit" data-value="9">9</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--minutes-ones-digit" data-value="0">0</div>
-                    </div>
-                </div>
-            </div>
-            <div class="scroll-clock__viewmaster">
-                <div class="scroll-clock__dial-backing">
-                    <div class="scroll-clock__dial scroll-clock__dial--seconds-tens-digit" id="seconds-tens">
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-tens-digit" data-value="0">0</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-tens-digit" data-value="1">1</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-tens-digit" data-value="2">2</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-tens-digit" data-value="3">3</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-tens-digit" data-value="4">4</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-tens-digit" data-value="5">5</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-tens-digit" data-value="0">0</div>
-                    </div>
-                </div>
-                <div class="scroll-clock__dial-backing">
-                    <div class="scroll-clock__dial scroll-clock__dial--seconds-ones-digit" id="seconds-ones">
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-ones-digit" data-value="0">0</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-ones-digit" data-value="1">1</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-ones-digit" data-value="2">2</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-ones-digit" data-value="3">3</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-ones-digit" data-value="4">4</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-ones-digit" data-value="5">5</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-ones-digit" data-value="6">6</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-ones-digit" data-value="7">7</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-ones-digit" data-value="8">8</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-ones-digit" data-value="9">9</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-ones-digit" data-value="0">0</div>
+                <div class="clock-dial" id="minutes-ones">
+                    <div class="clock-dial-positioner">
+                        <div class="clock-numeral">0</div>
+                        <div class="clock-numeral">1</div>
+                        <div class="clock-numeral">2</div>
+                        <div class="clock-numeral">3</div>
+                        <div class="clock-numeral">4</div>
+                        <div class="clock-numeral">5</div>
+                        <div class="clock-numeral">6</div>
+                        <div class="clock-numeral">7</div>
+                        <div class="clock-numeral">8</div>
+                        <div class="clock-numeral">9</div>
+                        <div class="clock-numeral">0</div>
                     </div>
                 </div>
             </div>
-            <div class="scroll-clock__viewmaster">
-                <div class="scroll-clock__dial-backing">
-                    <div class="scroll-clock__dial scroll-clock__dial--seconds-tenths-digit" id="seconds-tenths">
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-tenths-digit" data-value="0">0</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-tenths-digit" data-value="1">1</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-tenths-digit" data-value="2">2</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-tenths-digit" data-value="3">3</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-tenths-digit" data-value="4">4</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-tenths-digit" data-value="5">5</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-tenths-digit" data-value="6">6</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-tenths-digit" data-value="7">7</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-tenths-digit" data-value="8">8</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-tenths-digit" data-value="9">9</div>
-                        <div class="scroll-clock__numeral scroll-clock__numeral--seconds-tenths-digit" data-value="0">0</div>
+            <div class="clock-viewmaster">
+                <div class="clock-dial" id="seconds-tens">
+                    <div class="clock-dial-positioner">
+                        <div class="clock-numeral">0</div>
+                        <div class="clock-numeral">1</div>
+                        <div class="clock-numeral">2</div>
+                        <div class="clock-numeral">3</div>
+                        <div class="clock-numeral">4</div>
+                        <div class="clock-numeral">5</div>
+                        <div class="clock-numeral">0</div>
+                    </div>
+                </div>
+                <div class="clock-dial" id="seconds-ones">
+                    <div class="clock-dial-positioner">
+                        <div class="clock-numeral">0</div>
+                        <div class="clock-numeral">1</div>
+                        <div class="clock-numeral">2</div>
+                        <div class="clock-numeral">3</div>
+                        <div class="clock-numeral">4</div>
+                        <div class="clock-numeral">5</div>
+                        <div class="clock-numeral">6</div>
+                        <div class="clock-numeral">7</div>
+                        <div class="clock-numeral">8</div>
+                        <div class="clock-numeral">9</div>
+                        <div class="clock-numeral">0</div>
                     </div>
                 </div>
             </div>
         </div>
         <div id="menu" class="menu">
-            <ul class="menu__list">
-                <li class="menu__list-item">
-                    <a class="menu__link" href="../clocks/">&#x1f552;</a>
+            <ul class="menu-list">
+                <li class="menu-list-item">
+                    <a class="menu-link" href="../clocks/">&#x1f552;</a>
                 </li>
-                <li class="menu__list-item">
-                    <a class="menu__link" href="#" data-toggle-modal="#console-modal">&gt;...</a>
+                <li class="menu-list-item">
+                    <a class="menu-link" href="#" data-toggle-modal="#console-modal">&gt;...</a>
                 </li>
             </ul>
         </div>
         <div id="console-modal" class="modal">
-            <div class="modal__backdrop"></div>
-            <div class="modal__dialog">
-                <div class="modal__close">
-                    <a class="modal__close-button" data-toggle-modal="#console-modal" href="#">&times;</a>
+            <div class="modal-backdrop"></div>
+            <div class="modal-dialog">
+                <div class="modal-close">
+                    <a class="modal-close-button" data-toggle-modal="#console-modal" href="#">&times;</a>
                 </div>
                 <h1>
                     Console
@@ -155,7 +133,14 @@
             }
             var clock;
             function init() {
-                clock = new Clock();
+                var hoursDial       = new Dial(document.getElementById("hours"));
+                var minutesTensDial = new Dial(document.getElementById("minutes-tens"));
+                var minutesOnesDial = new Dial(document.getElementById("minutes-ones"));
+                var secondsTensDial = new Dial(document.getElementById("seconds-tens"));
+                var secondsOnesDial = new Dial(document.getElementById("seconds-ones"));
+                clock = new Clock(hoursDial,
+                                  minutesTensDial, minutesOnesDial,
+                                  secondsTensDial, secondsOnesDial);
                 clock.start();
             }
         </script>

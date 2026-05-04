@@ -1,64 +1,64 @@
 'use strict';
-/*global Dial */
 
-var TICK_DURATION = 1000;
-var TENTHS_TICK_DURATION = 100;
-
-function Clock() {
-    this.hoursDial         = new Dial(document.getElementById("hours"));
-    this.minutesTensDial   = new Dial(document.getElementById("minutes-tens"));
-    this.minutesOnesDial   = new Dial(document.getElementById("minutes-ones"));
-    this.secondsTensDial   = new Dial(document.getElementById("seconds-tens"));
-    this.secondsOnesDial   = new Dial(document.getElementById("seconds-ones"));
-    this.secondsTenthsDial = new Dial(document.getElementById("seconds-tenths"));
+function Dial(element) {
+    this.element = element;
+    this.value = 0;
+    this.lastValue = 0;
+    this.positioner = this.element.querySelector(".clock-dial-positioner");
+    this.valueCount = this.positioner.childElementCount - 1;
 }
+Object.assign(Dial.prototype, {
+    setValue: function (value) {
+        if (value % this.valueCount === this.value % this.valueCount)
+            return;
+        var curValue = this.value % this.valueCount;
+        var newValue = (value + this.valueCount - 1) % this.valueCount + 1;
+        console.log(curValue, newValue);
+        var top1 = "calc(-" + String(curValue) + " * var(--clock-font-size) * var(--clock-line-height))";
+        var top2 = "calc(-" + String(newValue) + " * var(--clock-font-size) * var(--clock-line-height))";
+        this.positioner.classList.remove("animating");
+        requestAnimationFrame(function () {
+            this.positioner.style.top = top1;
+            requestAnimationFrame(function () {
+                this.positioner.classList.add("animating");
+                requestAnimationFrame(function () {
+                    this.positioner.style.top = top2;
+                }.bind(this));
+            }.bind(this));
+        }.bind(this));
+        this.value = newValue;
+    }
+});
 
-Clock.prototype.update = function (date) {
-    if (date == null)
-        date = new Date();
-    this.updateMain(date);
-    this.updateTenths(date);
-};
-
-Clock.prototype.start = function () {
-    this.startMain();
-    this.startTenths();
-};
-
-Clock.prototype.updateMain = function (date) {
-    if (date == null)
-        date = new Date();
-    var hours = date.getHours();
-    var minutesTens = Math.floor(date.getMinutes() / 10);
-    var minutesOnes = date.getMinutes() % 10;
-    var secondsTens = Math.floor(date.getSeconds() / 10);
-    var secondsOnes = date.getSeconds() % 10;
-    this.hoursDial.setValue(hours);
-    this.minutesTensDial.setValue(minutesTens);
-    this.minutesOnesDial.setValue(minutesOnes);
-    this.secondsTensDial.setValue(secondsTens);
-    this.secondsOnesDial.setValue(secondsOnes);
-};
-
-Clock.prototype.updateTenths = function (date) {
-    if (date == null)
-        date = new Date();
-    var tenths = Math.round(date.getMilliseconds() / 100);
-    this.secondsTenthsDial.setValue(tenths);
-};
-
-Clock.prototype.startMain = function () {
-    var now = new Date();
-    var delay = TICK_DURATION - now % TICK_DURATION;
-    var then = now.getTime() + delay;
-    this.updateMain(new Date(then));
-    setTimeout(this.startMain.bind(this), delay);
-};
-
-Clock.prototype.startTenths = function () {
-    var now = new Date();
-    var delay = TENTHS_TICK_DURATION - now % TENTHS_TICK_DURATION;
-    var then = now.getTime() + delay;
-    this.updateTenths(new Date(then));
-    setTimeout(this.startTenths.bind(this), delay);
-};
+function Clock(hoursDial, minutesTensDial, minutesOnesDial, secondsTensDial, secondsOnesDial) {
+    this.hoursDial = hoursDial;
+    this.minutesTensDial = minutesTensDial;
+    this.minutesOnesDial = minutesOnesDial;
+    this.secondsTensDial = secondsTensDial;
+    this.secondsOnesDial = secondsOnesDial;
+}
+Object.assign(Clock.prototype, {
+    update: function (date) {
+        date = date == null ? new Date() : date;
+        const hours = date.getHours();
+        const minutesTens = Math.floor(date.getMinutes() / 10);
+        const minutesOnes = date.getMinutes() % 10;
+        const secondsTens = Math.floor(date.getSeconds() / 10);
+        const secondsOnes = date.getSeconds() % 10;
+        this.hoursDial.setValue(hours);
+        this.minutesTensDial.setValue(minutesTens);
+        this.minutesOnesDial.setValue(minutesOnes);
+        this.secondsTensDial.setValue(secondsTens);
+        this.secondsOnesDial.setValue(secondsOnes);
+    },
+    start: function (date) {
+        date = date == null ? new Date() : date;
+        this.update(date);
+        var ms = date.getTime();
+        var delay = 1000 - ms % 1000;
+        var then = new Date(ms + delay);
+        setTimeout(function () {
+            this.start(then);
+        }.bind(this), delay);
+    },
+});
