@@ -1,84 +1,35 @@
 @import url("../../clocks/css/normalize-8.0.1.css");
 @import url("fonts.css");
+@import url("clock.css");
 @import url("../../clocks/css/menu.css");
 @import url("../../clocks/css/modal.css");
 
 :root {
     --background-color: #222;
-    --dial-color: #444;
-    --numeral-color: #fff;
-    --scroll-background-image: linear-gradient(
-        to bottom,
-        rgba(0 0 0 / 60%),
-        rgba(0 0 0 / 30%),
-        rgba(0 0 0 / 10%),
-        transparent,
-        rgba(0 0 0 / 10%),
-        rgba(0 0 0 / 30%),
-        rgba(0 0 0 / 60%)
-    );
-    --font-size-mult: 4;
-    --line-height: 1.2;
-    --horizontal-margin: 1em;
-    --font-family: "Routed Gothic";
-    --viewmaster-border-color: white;
-    --dial-horizontal-padding: 0.05em;
+    --foreground-color: #eee;
 }
 *, *::before, *::after {
     box-sizing: border-box;
 }
 html {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
     background-color: var(--background-color);
 }
 body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 1rem;
+    position: relative;
 }
-.scroll-clock {
+#clock {
     position: fixed;
     top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    font-size: 13vw;
-    font-family: var(--font-family);
-    line-height: var(--line-height);
-    display: flex;
-    align-items: flex-start;
-}
-.scroll-clock > * + * {
-    margin-left: .25em;
-}
-.scroll-clock__viewmaster {
-    display: flex;
-    position: relative;
-    padding-left: 0.025em;
-    padding-right: 0.025em;
-    background-color: black;
-    overflow: hidden;
-
-    height: calc(1em * var(--line-height));
-    border-width: 2px;
-    border-style: solid;
-    border-color: var(--viewmaster-border-color);
-    border-radius: 0.1em;
-}
-.scroll-clock__viewmaster > * + * {
-    margin-left: 2px;
-}
-.scroll-clock__dial-backing {
-    background-color: var(--dial-color);
-    background-image: var(--scroll-background-image);
-}
-.scroll-clock__dial {
-    position: relative;
-    color: var(--numeral-color);
-    text-align: center;
-    padding-left: var(--dial-horizontal-padding);
-    padding-right: var(--dial-horizontal-padding);
-    transition: top 0.15s;
-}
-.scroll-clock__numeral {
+    left: 0;
     width: 100%;
+    transform: translateY(-50%);
     text-align: center;
-}
-.scroll-clock__dial--seconds-tenths-digit {
-    transition: none;
 }

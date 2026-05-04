@@ -7,9 +7,9 @@
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/fonts.css">
         <link rel="stylesheet" href="css/menu.css">
-        <link rel="stylesheet" href="css/clock.css?v=9">
+        <link rel="stylesheet" href="css/clock.css">
+        <link rel="stylesheet" href="../clocks/css/menu.css">
         <script src="js/clock.js"></script>
-        <script src="../clocks/js/modal.js"></script>
         <title>Scroll Clock</title>
     </head>
     <body>
@@ -45,6 +45,7 @@
                     </div>
                 </div>
             </div>
+            <div class="clock-colon">:</div>
             <div class="clock-viewmaster">
                 <div class="clock-dial" id="minutes-tens">
                     <div class="clock-dial-positioner">
@@ -73,6 +74,7 @@
                     </div>
                 </div>
             </div>
+            <div class="clock-colon">:</div>
             <div class="clock-viewmaster">
                 <div class="clock-dial" id="seconds-tens">
                     <div class="clock-dial-positioner">
@@ -103,34 +105,13 @@
             </div>
         </div>
         <div id="menu" class="menu">
-            <ul class="menu-list">
-                <li class="menu-list-item">
-                    <a class="menu-link" href="../clocks/">&#x1f552;</a>
-                </li>
-                <li class="menu-list-item">
-                    <a class="menu-link" href="#" data-toggle-modal="#console-modal">&gt;...</a>
+            <ul class="menu__list">
+                <li class="menu__list-item">
+                    <a class="menu__link" href="../clocks/index.html">&#x1f552;</a>
                 </li>
             </ul>
         </div>
-        <div id="console-modal" class="modal">
-            <div class="modal-backdrop"></div>
-            <div class="modal-dialog">
-                <div class="modal-close">
-                    <a class="modal-close-button" data-toggle-modal="#console-modal" href="#">&times;</a>
-                </div>
-                <h1>
-                    Console
-                </h1>
-                <pre id="console-replacer" style="overflow-x: auto;"></pre>
-            </div>
-        </div>
         <script>
-            initModalToggles();
-            if (document.readyState === 'complete') {
-                init();
-            } else {
-                window.addEventListener('load', init);
-            }
             var clock;
             function init() {
                 var hoursDial       = new Dial(document.getElementById("hours"));
@@ -142,6 +123,11 @@
                                   minutesTensDial, minutesOnesDial,
                                   secondsTensDial, secondsOnesDial);
                 clock.start();
+            }
+            if (document.readyState === 'complete') {
+                init();
+            } else {
+                window.addEventListener('load', init);
             }
         </script>
     </body>

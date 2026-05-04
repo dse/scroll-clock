@@ -1,0 +1,61 @@
+:root {
+    --clock-font-size: 10vw;
+    --clock-line-height: 1.1;
+    --clock-font-family: "Routed Gothic";
+    --clock-background-color: #444;
+    --clock-foreground-color: #eee;
+    --clock-border-color: #eee;
+    --clock-border-radius: 0.1em;
+    --clock-gradient-color: #181818;
+    --clock-dial-gap: 2px;
+    --clock-dial-padding: 0.05em;
+}
+.clock {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    font-size: var(--clock-font-size);
+    color: var(--clock-foreground-color);
+    align-items: baseline;
+}
+.clock-viewmaster {
+    display: inline-block;
+    border: 2px solid var(--clock-border-color);
+    border-radius: var(--clock-border-radius);
+    line-height: var(--clock-line-height);
+    font-family: var(--clock-font-family);
+    height: calc(var(--clock-font-size) * var(--clock-line-height));
+    overflow: hidden;
+    display: flex;
+    background-color: black;
+}
+.clock-colon {
+    display: inline-block;
+}
+.clock-viewmaster + .clock-viewmaster {
+    margin-left: 0.25em;
+}
+.clock-viewmaster + .clock-colon,
+.clock-colon + .clock-viewmaster {
+    margin-left: 0.1em;
+}
+.clock-dial {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: var(--clock-dial-gap);
+    margin-right: var(--clock-dial-gap);
+    padding-left: var(--clock-dial-padding);
+    padding-right: var(--clock-dial-padding);
+    background-color: var(--clock-background-color);
+    background-image: linear-gradient(to bottom,
+                                      var(--clock-gradient-color),
+                                      transparent,
+                                      var(--clock-gradient-color));
+}
+.clock-dial-positioner {
+    position: relative;
+    top: 0;
+}
+.clock-dial-positioner.animating {
+    transition: top 150ms;
+}
