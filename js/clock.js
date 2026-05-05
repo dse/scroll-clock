@@ -42,13 +42,13 @@ function Clock(hoursDial, minutesTensDial, minutesOnesDial, secondsTensDial, sec
 Object.assign(Clock.prototype, {
     update: function (date) {
         date = date == null ? new Date() : date;
-        const hours = date.getHours();
-        const minutesTens = Math.floor(date.getMinutes() / 10);
-        const minutesOnes = date.getMinutes() % 10;
-        const secondsTens = Math.floor(date.getSeconds() / 10);
-        const secondsOnes = date.getSeconds() % 10;
-        const dayValue = date.getDay();
-        const dateValue = date.getDate() - 1;
+        var hours = date.getHours();
+        var minutesTens = Math.floor(date.getMinutes() / 10);
+        var minutesOnes = date.getMinutes() % 10;
+        var secondsTens = Math.floor(date.getSeconds() / 10);
+        var secondsOnes = date.getSeconds() % 10;
+        var dayValue = date.getDay();
+        var dateValue = date.getDate() - 1;
         this.hoursDial.setValue(hours);
         this.minutesTensDial.setValue(minutesTens);
         this.minutesOnesDial.setValue(minutesOnes);
