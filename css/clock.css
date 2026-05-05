@@ -1,5 +1,5 @@
 :root {
-    --clock-font-size: 10vw;
+    --clock-font-size: 8.5vw;
     --clock-line-height: 1.1;
     --clock-font-family: "Routed Gothic";
     --clock-background-color: #444;
@@ -14,14 +14,18 @@
     text-align: center;
     display: flex;
     justify-content: center;
-    font-size: var(--clock-font-size);
     color: var(--clock-foreground-color);
+    font-size: var(--clock-font-size);
     align-items: baseline;
 }
 .clock-viewmaster {
     display: inline-block;
-    border: 2px solid var(--clock-border-color);
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--clock-border-color);
     border-radius: var(--clock-border-radius);
+    padding-left: 4px;
+    padding-right: 4px;
     line-height: var(--clock-line-height);
     font-family: var(--clock-font-family);
     height: calc(var(--clock-font-size) * var(--clock-line-height));
@@ -42,8 +46,6 @@
 .clock-dial {
     display: inline-block;
     vertical-align: top;
-    margin-left: var(--clock-dial-gap);
-    margin-right: var(--clock-dial-gap);
     padding-left: var(--clock-dial-padding);
     padding-right: var(--clock-dial-padding);
     background-color: var(--clock-background-color);
@@ -51,6 +53,9 @@
                                       var(--clock-gradient-color),
                                       transparent,
                                       var(--clock-gradient-color));
+}
+.clock-dial + .clock-dial {
+    margin-left: var(--clock-dial-gap);
 }
 .clock-dial-positioner {
     position: relative;

@@ -103,6 +103,60 @@
                     </div>
                 </div>
             </div>
+            <div class="clock-colon">&nbsp;</div>
+            <div class="clock-viewmaster clock-viewmaster-date">
+                <div class="clock-dial" id="day">
+                    <div class="clock-dial-positioner">
+                        <div class="clock-numeral">SUN</div>
+                        <div class="clock-numeral">MON</div>
+                        <div class="clock-numeral">TUE</div>
+                        <div class="clock-numeral">WED</div>
+                        <div class="clock-numeral">THU</div>
+                        <div class="clock-numeral">FRI</div>
+                        <div class="clock-numeral">SAT</div>
+                        <div class="clock-numeral">SUN</div>
+                    </div>
+                </div>
+            </div>
+            <div class="clock-colon"></div>
+            <div class="clock-viewmaster clock-viewmaster-date">
+                <div class="clock-dial" id="date">
+                    <div class="clock-dial-positioner">
+                        <div class="clock-numeral">1</div>
+                        <div class="clock-numeral">2</div>
+                        <div class="clock-numeral">3</div>
+                        <div class="clock-numeral">4</div>
+                        <div class="clock-numeral">5</div>
+                        <div class="clock-numeral">6</div>
+                        <div class="clock-numeral">7</div>
+                        <div class="clock-numeral">8</div>
+                        <div class="clock-numeral">9</div>
+                        <div class="clock-numeral">10</div>
+                        <div class="clock-numeral">11</div>
+                        <div class="clock-numeral">12</div>
+                        <div class="clock-numeral">13</div>
+                        <div class="clock-numeral">14</div>
+                        <div class="clock-numeral">15</div>
+                        <div class="clock-numeral">16</div>
+                        <div class="clock-numeral">17</div>
+                        <div class="clock-numeral">18</div>
+                        <div class="clock-numeral">19</div>
+                        <div class="clock-numeral">20</div>
+                        <div class="clock-numeral">21</div>
+                        <div class="clock-numeral">22</div>
+                        <div class="clock-numeral">23</div>
+                        <div class="clock-numeral">24</div>
+                        <div class="clock-numeral">25</div>
+                        <div class="clock-numeral">26</div>
+                        <div class="clock-numeral">27</div>
+                        <div class="clock-numeral">28</div>
+                        <div class="clock-numeral">29</div>
+                        <div class="clock-numeral">30</div>
+                        <div class="clock-numeral">31</div>
+                        <div class="clock-numeral">1</div>
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="menu" class="menu">
             <ul class="menu__list">
@@ -113,15 +167,27 @@
         </div>
         <script>
             var clock;
+                var hoursDial;
+                var minutesTensDial;
+                var minutesOnesDial;
+                var secondsTensDial;
+                var secondsOnesDial;
+                var dayDial;
+                var dateDial;
+
             function init() {
-                var hoursDial       = new Dial(document.getElementById("hours"));
-                var minutesTensDial = new Dial(document.getElementById("minutes-tens"));
-                var minutesOnesDial = new Dial(document.getElementById("minutes-ones"));
-                var secondsTensDial = new Dial(document.getElementById("seconds-tens"));
-                var secondsOnesDial = new Dial(document.getElementById("seconds-ones"));
+                hoursDial       = new Dial(document.getElementById("hours"));
+                minutesTensDial = new Dial(document.getElementById("minutes-tens"));
+                minutesOnesDial = new Dial(document.getElementById("minutes-ones"));
+                secondsTensDial = new Dial(document.getElementById("seconds-tens"));
+                secondsOnesDial = new Dial(document.getElementById("seconds-ones"));
+                dayDial  = new Dial(document.getElementById("day"));
+                dateDial = new Dial(document.getElementById("date"));
                 clock = new Clock(hoursDial,
                                   minutesTensDial, minutesOnesDial,
-                                  secondsTensDial, secondsOnesDial);
+                                  secondsTensDial, secondsOnesDial,
+                                  dayDial,
+                                  dateDial);
                 clock.start();
             }
             if (document.readyState === 'complete') {

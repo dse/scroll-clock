@@ -30,12 +30,14 @@ Object.assign(Dial.prototype, {
     }
 });
 
-function Clock(hoursDial, minutesTensDial, minutesOnesDial, secondsTensDial, secondsOnesDial) {
+function Clock(hoursDial, minutesTensDial, minutesOnesDial, secondsTensDial, secondsOnesDial, dayDial, dateDial) {
     this.hoursDial = hoursDial;
     this.minutesTensDial = minutesTensDial;
     this.minutesOnesDial = minutesOnesDial;
     this.secondsTensDial = secondsTensDial;
     this.secondsOnesDial = secondsOnesDial;
+    this.dayDial = dayDial;
+    this.dateDial = dateDial;
 }
 Object.assign(Clock.prototype, {
     update: function (date) {
@@ -45,11 +47,15 @@ Object.assign(Clock.prototype, {
         const minutesOnes = date.getMinutes() % 10;
         const secondsTens = Math.floor(date.getSeconds() / 10);
         const secondsOnes = date.getSeconds() % 10;
+        const dayValue = date.getDay();
+        const dateValue = date.getDate() - 1;
         this.hoursDial.setValue(hours);
         this.minutesTensDial.setValue(minutesTens);
         this.minutesOnesDial.setValue(minutesOnes);
         this.secondsTensDial.setValue(secondsTens);
         this.secondsOnesDial.setValue(secondsOnes);
+        this.dayDial.setValue(dayValue);
+        this.dateDial.setValue(dateValue);
     },
     start: function (date) {
         date = date == null ? new Date() : date;
@@ -57,8 +63,15 @@ Object.assign(Clock.prototype, {
         var ms = date.getTime();
         var delay = 1000 - ms % 1000;
         var then = new Date(ms + delay);
-        setTimeout(function () {
+        this.timeout = setTimeout(function () {
+            this.timeout = null;
             this.start(then);
         }.bind(this), delay);
+    },
+    stop: function () {
+        if (this.timeout != null) {
+            clearTimeout(this.timeout);
+            this.timeout = null;
+        }
     },
 });
